@@ -1,3 +1,3 @@
 - Daksh Sharma
 - Ayush Dixit
-- Alpa Tiwari
+- Alpa Tiwari (Cartoon)
