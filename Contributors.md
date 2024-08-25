@@ -1,2 +1,1 @@
 - Daksh Sharma
-- Ayush Dixit
