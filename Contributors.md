@@ -1,3 +1,4 @@
 - Daksh Sharma
 - Ayush Dixit
 - Alpa Tiwari (Cartoon)
+- Priya Tripathi
