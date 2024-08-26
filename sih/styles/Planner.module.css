@@ -60,4 +60,40 @@
     text-align: center;
     color: #888;
   }
+  .newTaskInput {
+    background-color: #2d2d2d;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
   
+  .newTaskInput input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .newTaskActions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .newTaskActions button {
+    background-color: #3a3a3a;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  
+  .dateIndicator {
+    color: #888;
+    font-size: 12px;
+  }

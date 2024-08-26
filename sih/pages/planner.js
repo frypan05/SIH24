@@ -3,6 +3,8 @@ import Head from 'next/head';
 import styles from '../styles/Planner.module.css';
 
 const Planner = () => {
+  const [isAddingTask, setIsAddingTask] = useState(false);
+  const [newTaskText, setNewTaskText] = useState('');
   const [today, setToday] = useState(new Date());
   const [currentTime, setCurrentTime] = useState('');
 
@@ -35,6 +37,34 @@ const Planner = () => {
 
   const weekDates = generateDateRange(today, 4);
 
+  const handleAddNewTask = () => {
+    setIsAddingTask(true);
+  };
+
+  const handleSaveTask = () => {
+    // Here you would typically save the task to your data store
+    console.log('Saving task:', newTaskText);
+    setIsAddingTask(false);
+    setNewTaskText('');
+  };
+
+  const handleCancelTask = () => {
+    setIsAddingTask(false);
+    setNewTaskText('');
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSaveTask();
+    } else if (e.key === 'Escape') {
+      handleCancelTask();
+    }
+  };
+
+  const redirectToGitHubIssues = () => {
+    window.open('https://github.com/your-username/your-repo/issues', '_blank');
+  };
+
   return (
     <>
       <Head>
@@ -49,8 +79,8 @@ const Planner = () => {
             <button>Task Dump</button>
           </div>
           <div className={styles.headerRight}>
-            <button className={styles.feedbackButton}>Feedback</button>
-            <button className={styles.focusButton}>Focus</button>
+            <button className={styles.feedbackButton} onClick={redirectToGitHubIssues}>Feedback</button>
+            <button className={styles.focusButton} onClick={redirectToGitHubIssues}>Focus</button>
             <span className={styles.time}>{currentTime}</span>
             <button className={styles.timeFormat}>12hr</button>
           </div>
@@ -64,11 +94,29 @@ const Planner = () => {
                 {date.toDateString() === today.toDateString() && <span className={styles.todayLabel}>TODAY</span>}
               </div>
               <div className={styles.taskArea}>
-                <div className={styles.noTasks}>
-                  <span className={styles.checkIcon}>✓</span>
-                  <p>No tasks for this day</p>
-                  <a href="#">Add a new task</a>
-                </div>
+                {isAddingTask ? (
+                  <div className={styles.newTaskInput}>
+                    <input
+                      type="text"
+                      value={newTaskText}
+                      onChange={(e) => setNewTaskText(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      placeholder="Type and press enter to save or esc to cancel"
+                      autoFocus
+                    />
+                    <div className={styles.newTaskActions}>
+                      <button onClick={handleSaveTask}>SAVE</button>
+                      <button onClick={handleCancelTask}>CANCEL</button>
+                      <span className={styles.dateIndicator}>{formatDate(date)}</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className={styles.noTasks}>
+                    <span className={styles.checkIcon}>✓</span>
+                    <p>No tasks for this day</p>
+                    <a href="#" onClick={handleAddNewTask}>Add a new task</a>
+                  </div>
+                )}
               </div>
             </div>
           ))}
