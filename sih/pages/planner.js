@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router'; // Import useRouter
+import { useRouter } from 'next/router';
 import styles from '../styles/Planner.module.css';
 
 const Planner = () => {
   const [isAddingTask, setIsAddingTask] = useState(false);
   const [newTaskText, setNewTaskText] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date()); // New state to keep track of selected date
   const [today, setToday] = useState(new Date());
   const [currentTime, setCurrentTime] = useState('');
   const [tasks, setTasks] = useState({});
-  
-  const router = useRouter(); // Initialize useRouter
+
+  const router = useRouter();
 
   useEffect(() => {
     const updateDateTime = () => {
@@ -20,7 +21,7 @@ const Planner = () => {
     };
 
     updateDateTime();
-    const intervalId = setInterval(updateDateTime, 60000); // Update every minute
+    const intervalId = setInterval(updateDateTime, 60000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -41,12 +42,13 @@ const Planner = () => {
 
   const weekDates = generateDateRange(today, 4);
 
-  const handleAddNewTask = () => {
+  const handleAddNewTask = (date) => {
     setIsAddingTask(true);
+    setSelectedDate(date); // Set the selected date for task addition
   };
 
   const handleSaveTask = () => {
-    const dateKey = today.toDateString();
+    const dateKey = selectedDate.toDateString(); // Use selected date for task addition
     if (newTaskText.trim()) {
       setTasks((prevTasks) => ({
         ...prevTasks,
@@ -86,7 +88,7 @@ const Planner = () => {
   };
 
   const redirectToIndex = () => {
-    router.push('/'); // Redirect to the index page
+    router.push('/');
   };
 
   return (
@@ -104,7 +106,7 @@ const Planner = () => {
           </div>
           <div className={styles.headerRight}>
             <button className={styles.feedbackButton} onClick={redirectToGitHubIssues}>Feedback</button>
-            <button className={styles.focusButton} onClick={redirectToGitHubIssues}>Focus</button>
+
             <span className={styles.time}>{currentTime}</span>
             <button className={styles.timeFormat}>12hr</button>
           </div>
@@ -131,7 +133,7 @@ const Planner = () => {
                       <span className={task.completed ? styles.completedTask : ''}>{task.text}</span>
                     </div>
                   ))}
-                  {isAddingTask && date.toDateString() === today.toDateString() && (
+                  {isAddingTask && selectedDate.toDateString() === date.toDateString() && (
                     <div className={styles.newTaskInput}>
                       <input
                         type="text"
@@ -148,8 +150,8 @@ const Planner = () => {
                       </div>
                     </div>
                   )}
-                  {date.toDateString() === today.toDateString() && !isAddingTask && (
-                    <button className={styles.addTaskButton} onClick={handleAddNewTask}>
+                  {!isAddingTask && (
+                    <button className={styles.addTaskButton} onClick={() => handleAddNewTask(date)}>
                       + Add task
                     </button>
                   )}
