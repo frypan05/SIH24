@@ -106,9 +106,7 @@ const Planner = () => {
           </div>
           <div className={styles.headerRight}>
             <button className={styles.feedbackButton} onClick={redirectToGitHubIssues}>Feedback</button>
-
             <span className={styles.time}>{currentTime}</span>
-            <button className={styles.timeFormat}>12hr</button>
           </div>
         </div>
         <div className={styles.content}>
@@ -146,7 +144,6 @@ const Planner = () => {
                       <div className={styles.newTaskActions}>
                         <button onClick={handleSaveTask}>SAVE</button>
                         <button onClick={handleCancelTask}>CANCEL</button>
-                        <span className={styles.dateIndicator}>{formatDate(date)}</span>
                       </div>
                     </div>
                   )}
