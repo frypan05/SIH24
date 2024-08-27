@@ -2,3 +2,4 @@
 - Ayush Dixit
 - Alpa Tiwari (Cartoon)
 - Priya Tripathi
+- Anchal Jaiswal 
