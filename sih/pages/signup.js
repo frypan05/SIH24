@@ -33,7 +33,7 @@ const Signup = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h1 className={styles.logo}>Get in.</h1>
+        <h1 className={styles.logo}>Get in</h1>
         <p className={styles.subheading}>Create Account</p>
 
         <form onSubmit={handleSubmit}>
