@@ -23,7 +23,7 @@ export default function Home() {
         </Link>
         <Link href="/progress">
           <div className={styles.card}>
-            <h2 className={styles.cardTitle}>Track Progress</h2>
+            <h2 className={styles.cardTitle}>Dashboard</h2>
             <p className={styles.cardDescription}>Monitor your learning progress.</p>
           </div>
         </Link>
