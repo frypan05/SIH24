@@ -7,7 +7,6 @@ const InstructorResources = () => {
   const [textInput, setTextInput] = useState('');
   const [showTextInput, setShowTextInput] = useState(false);
   const [textPosition, setTextPosition] = useState({ x: 0, y: 0 });
-  const canvasRef = useRef();
 
   const colors = ['black', 'red', 'blue', 'yellow', 'pink', 'gray', 'white'];
   const tools = ['pen', 'eraser', 'rectangle', 'circle', 'text'];
@@ -24,45 +23,8 @@ const InstructorResources = () => {
 
   const addTextToCanvas = () => {
     if (textInput.trim() === '') return;
-    if (canvasRef.current) {
-      canvasRef.current.addText({
-        text: textInput,
-        x: textPosition.x,
-        y: textPosition.y,
-        color: 'black' // Set text color to black
-      });
-    }
     setShowTextInput(false);
     setTextInput('');
-  };
-
-  const drawShape = (shapeType) => {
-    if (!canvasRef.current) return;
-
-    const canvas = canvasRef.current;
-    if (shapeType === 'rectangle') {
-      const rectPath = [
-        { draw: 'move', x: 100, y: 100 },
-        { draw: 'line', x: 300, y: 100 },
-        { draw: 'line', x: 300, y: 200 },
-        { draw: 'line', x: 100, y: 200 },
-        { draw: 'close' },
-      ];
-      canvas.loadPaths(rectPath);
-    } else if (shapeType === 'circle') {
-      const circlePath = [
-        { draw: 'move', x: 200, y: 150 },
-        { draw: 'arc', x: 200, y: 150, radius: 50, startAngle: 0, endAngle: 2 * Math.PI },
-      ];
-      canvas.loadPaths(circlePath);
-    }
-  };
-
-  const handleToolSelect = (tool) => {
-    setSelectedTool(tool);
-    if (tool === 'rectangle' || tool === 'circle') {
-      drawShape(tool);
-    }
   };
 
   return (
@@ -93,9 +55,8 @@ const InstructorResources = () => {
       </header>
 
       <main className="flex-grow p-4" onClick={handleCanvasClick}>
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden relative">
           <ReactSketchCanvas
-            ref={canvasRef}
             className="w-full"
             style={{ height: 'calc(100vh - 180px)' }}
             strokeWidth={4}
@@ -104,21 +65,20 @@ const InstructorResources = () => {
             eraserWidth={5}
             canvasColor="white"
           />
+          {showTextInput && (
+            <div style={{ position: 'absolute', top: textPosition.y, left: textPosition.x }}>
+              <input
+                type="text"
+                value={textInput}
+                onChange={(e) => setTextInput(e.target.value)}
+                onBlur={addTextToCanvas}
+                autoFocus
+                style={{ color: 'black' }} // Set input text color to black
+              />
+            </div>
+          )}
         </div>
       </main>
-
-      {showTextInput && (
-        <div style={{ position: 'absolute', top: textPosition.y, left: textPosition.x }}>
-          <input
-            type="text"
-            value={textInput}
-            onChange={(e) => setTextInput(e.target.value)}
-            onBlur={addTextToCanvas}
-            autoFocus
-            style={{ color: 'black' }} // Set input text color to black
-          />
-        </div>
-      )}
 
       <footer className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
@@ -137,7 +97,7 @@ const InstructorResources = () => {
               <button
                 key={tool}
                 className={`p-2 rounded-md ${selectedTool === tool ? 'bg-gray-200' : ''}`}
-                onClick={() => handleToolSelect(tool)}
+                onClick={() => setSelectedTool(tool)}
               >
                 {tool === 'text' && <span className="w-5 h-5 block bg-gray-400 rounded-sm">T</span>}
                 {tool === 'rectangle' && <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4h16v16H4z" /></svg>}
