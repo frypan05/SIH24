@@ -1,11 +1,13 @@
 // pages/signup.js
 import { useState } from "react";
 import styles from "../styles/signup.module.css";
+import { useRouter } from "next/router";  // Import useRouter from Next.js
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const router = useRouter();  // Initialize router
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,6 +34,10 @@ const Signup = () => {
 
   return (
     <div className={styles.container}>
+      {/* Circular back button */}
+      <button className={styles.backButton} onClick={() => router.push("/")}>
+        &larr; {/* Unicode for a left arrow */}
+      </button>
       <div className={styles.content}>
         <h1 className={styles.logo}>Get in</h1>
         <p className={styles.subheading}>Create Account</p>

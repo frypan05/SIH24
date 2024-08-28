@@ -15,5 +15,6 @@ export default NextAuth({
   ],
   pages: {
     signIn: '/login', // Redirect to the login page for sign-in
+    newUser: '/progress',
   },
 });
