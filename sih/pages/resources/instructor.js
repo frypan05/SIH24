@@ -6,7 +6,7 @@ const InstructorResources = () => {
   const [selectedTool, setSelectedTool] = useState('pen');
 
   const colors = ['black', 'red', 'blue', 'yellow', 'pink', 'gray', 'white'];
-  const tools = ['pen', 'eraser', 'selector', 'laser', 'shape', 'text', 'sticky', 'upload'];
+  const tools = ['pen', 'eraser', 'selector', 'laser', 'shape', 'text', 'sticky', 'upload','more'];
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
