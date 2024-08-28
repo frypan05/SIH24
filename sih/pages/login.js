@@ -12,8 +12,27 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Example: Authenticate user (this would need to be implemented in your backend)
-    console.log("Logging in with email and password", email, password);
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        // If login is successful, redirect to the progress page
+        router.push("/progress");
+      } else {
+        // Handle errors
+        const errorData = await response.json();
+        console.error(errorData.message);
+        alert(errorData.message);  // Show error message
+      }
+    } catch (error) {
+      console.error("An unexpected error occurred:", error);
+    }
   };
 
   return (
@@ -21,8 +40,6 @@ const Login = () => {
       {/* Circular back button */}
       <button className={styles.backArrow} onClick={() => router.push("/signup")}>
         &larr; {/* Unicode for a left arrow */}
-
-        
       </button>
       <div className={styles.content}>
         <h1 className={styles.logo}>Welcome Back</h1>
