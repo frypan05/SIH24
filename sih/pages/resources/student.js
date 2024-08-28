@@ -25,7 +25,7 @@ const DeveloperRoadmaps = () => {
     <div className="bg-[#081D22] text-white min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
-          <div className="inline-block bg-[#1A1E24] text-[#BD93F9] text-sm px-4 py-2 rounded-full mb-4">
+          <div className="inline-block bg-[#01151A] text-[#BD93F9] text-sm px-4 py-2 rounded-full mb-4">
             {/* Link to the landing page */}
             <a href="/" className="text-[#BD93F9] hover:underline">Back to Home Page.</a>
           </div>
@@ -52,7 +52,7 @@ const DeveloperRoadmaps = () => {
             </div>
           ))}
           <div
-            className="bg-[#1A1E24] p-4 rounded-lg flex justify-between items-center text-purple-400 cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
+            className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center text-[#9E00FF] cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
             onClick={() => handleRoadmapClick('Create your own Roadmap')}
           >
             + Create your own Roadmap
@@ -64,7 +64,7 @@ const DeveloperRoadmaps = () => {
           {skillmaps.map((roadmap, index) => (
             <div
               key={index}
-              className="bg-[#1A1E24] p-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
+              className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
               onClick={() => handleRoadmapClick(roadmap)}
             >
               <span>{roadmap}</span>
@@ -75,7 +75,7 @@ const DeveloperRoadmaps = () => {
             </div>
           ))}
           <div
-            className="bg-[#1A1E24] p-4 rounded-lg flex justify-between items-center text-purple-400 cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
+            className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center text-[#9E00FF] cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
             onClick={() => handleRoadmapClick('Create your own Roadmap')}
           >
             + Create your own Roadmap
