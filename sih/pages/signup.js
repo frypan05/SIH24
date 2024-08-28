@@ -21,7 +21,7 @@ const Signup = () => {
       });
       if (response.ok) {
         // Successful signup, redirect to login page
-        window.location.href = "/login";
+        window.location.href = "/progress";
       } else {
         console.error("Signup failed");
       }
