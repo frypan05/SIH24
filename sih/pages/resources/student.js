@@ -22,14 +22,14 @@ const DeveloperRoadmaps = () => {
   };
 
   return (
-    <div className="bg-[#0D1117] text-white min-h-screen p-8">
+    <div className="bg-[#081D22] text-white min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <div className="inline-block bg-[#1A1E24] text-[#BD93F9] text-sm px-4 py-2 rounded-full mb-4">
             {/* Placeholder text */}
             Jai Mata di
           </div>
-          <h1 className="text-5xl font-bold text-[#BD93F9] mb-4">Handcrafted Developer Roadmaps</h1>
+          <h1 className="text-5xl font-bold text-[#8AD4D0] mb-4">Handcrafted Developer Roadmaps</h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
             This is an effort to create roadmaps, guides and other educational content to help
             guide developers in picking up a path and guide their learnings.
@@ -41,7 +41,7 @@ const DeveloperRoadmaps = () => {
           {roadmaps.map((roadmap, index) => (
             <div
               key={index}
-              className="bg-[#1A1E24] p-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-[#6A1D85] hover:text-white transition-all duration-300"
+              className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
               onClick={() => handleRoadmapClick(roadmap)}
             >
               <span>{roadmap}</span>
@@ -52,7 +52,7 @@ const DeveloperRoadmaps = () => {
             </div>
           ))}
           <div
-            className="bg-[#1A1E24] p-4 rounded-lg flex justify-between items-center text-purple-400 cursor-pointer hover:bg-[#6A1D85] hover:text-white transition-all duration-300"
+            className="bg-[#1A1E24] p-4 rounded-lg flex justify-between items-center text-purple-400 cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
             onClick={() => handleRoadmapClick('Create your own Roadmap')}
           >
             + Create your own Roadmap
@@ -64,7 +64,7 @@ const DeveloperRoadmaps = () => {
           {skillmaps.map((roadmap, index) => (
             <div
               key={index}
-              className="bg-[#1A1E24] p-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-[#6A1D85] hover:text-white transition-all duration-300"
+              className="bg-[#1A1E24] p-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
               onClick={() => handleRoadmapClick(roadmap)}
             >
               <span>{roadmap}</span>
@@ -75,7 +75,7 @@ const DeveloperRoadmaps = () => {
             </div>
           ))}
           <div
-            className="bg-[#1A1E24] p-4 rounded-lg flex justify-between items-center text-purple-400 cursor-pointer hover:bg-[#6A1D85] hover:text-white transition-all duration-300"
+            className="bg-[#1A1E24] p-4 rounded-lg flex justify-between items-center text-purple-400 cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
             onClick={() => handleRoadmapClick('Create your own Roadmap')}
           >
             + Create your own Roadmap
