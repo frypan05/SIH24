@@ -78,3 +78,96 @@
     text-decoration: underline;
   }
   
+  /* styles/signup.module.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #181818; /* Dark mode background */
+}
+
+.content {
+  background-color: #2C2C2C; /* Dark card background */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  color: #ffffff; /* Light text for contrast */
+}
+
+.logo {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #BD93F9; /* Purple accent color */
+}
+
+.subheading {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #A6ACCD; /* Light grey for subheading */
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #444; /* Darker border for input fields */
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #333; /* Dark input background */
+  color: #eee; /* Light input text */
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #6A1D85; /* Purple border on focus */
+}
+
+.button {
+  background-color: #6A1D85; /* Primary button color */
+  color: #ffffff;
+  padding: 12px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.button:hover {
+  background-color: #4E1462; /* Darker purple on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.button:active {
+  transform: translateY(0); /* Reset on click */
+}
+
+.loginPrompt {
+  margin-top: 20px;
+  color: #A6ACCD; /* Grey text */
+}
+
+.loginLink {
+  color: #BD93F9; /* Purple link color */
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+.loginLink:hover {
+  color: #6A1D85; /* Color change on hover */
+}
