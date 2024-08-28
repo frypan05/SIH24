@@ -10,7 +10,60 @@ const InstructorResources = () => {
   const canvasRef = useRef();
 
   const colors = ['black', 'red', 'blue', 'yellow', 'pink', 'gray', 'white'];
-  const tools = ['pen', 'eraser', 'selector', 'laser', 'shape', 'text', 'sticky', 'upload'];
+  const tools = ['pen', 'eraser', 'rectangle', 'circle', 'text'];
+
+  const handleCanvasClick = (e) => {
+    if (selectedTool === 'text') {
+      const canvasBounds = e.target.getBoundingClientRect();
+      const x = e.clientX - canvasBounds.left;
+      const y = e.clientY - canvasBounds.top;
+      setTextPosition({ x, y });
+      setShowTextInput(true);
+    }
+  };
+
+  const addTextToCanvas = () => {
+    if (textInput.trim() === '') return;
+    if (canvasRef.current) {
+      canvasRef.current.addText({
+        text: textInput,
+        x: textPosition.x,
+        y: textPosition.y,
+        color: 'black' // Set text color to black
+      });
+    }
+    setShowTextInput(false);
+    setTextInput('');
+  };
+
+  const drawShape = (shapeType) => {
+    if (!canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    if (shapeType === 'rectangle') {
+      const rectPath = [
+        { draw: 'move', x: 100, y: 100 },
+        { draw: 'line', x: 300, y: 100 },
+        { draw: 'line', x: 300, y: 200 },
+        { draw: 'line', x: 100, y: 200 },
+        { draw: 'close' },
+      ];
+      canvas.loadPaths(rectPath);
+    } else if (shapeType === 'circle') {
+      const circlePath = [
+        { draw: 'move', x: 200, y: 150 },
+        { draw: 'arc', x: 200, y: 150, radius: 50, startAngle: 0, endAngle: 2 * Math.PI },
+      ];
+      canvas.loadPaths(circlePath);
+    }
+  };
+
+  const handleToolSelect = (tool) => {
+    setSelectedTool(tool);
+    if (tool === 'rectangle' || tool === 'circle') {
+      drawShape(tool);
+    }
+  };
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
@@ -89,6 +142,8 @@ const InstructorResources = () => {
                 {tool === 'text' && <span className="w-5 h-5 block bg-gray-400 rounded-sm">T</span>}
                 {tool === 'rectangle' && <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4h16v16H4z" /></svg>}
                 {tool === 'circle' && <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.5a7.5 7.5 0 100 15 7.5 7.5 0 000-15z" /></svg>}
+                {tool === 'eraser' && <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12l7 7 7-7-7-7-7 7z" /></svg>}
+                {/* Add other tools here */}
               </button>
             ))}
           </div>
