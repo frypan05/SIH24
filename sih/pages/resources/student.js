@@ -11,13 +11,7 @@ const DeveloperRoadmaps = () => {
     'Developer Relations'
   ];
   const skillmaps = [
-    'Frontend', 'Backend', 'DevOps',
-    'Full Stack', 'AI and Data Scientist', 'Data Analyst',
-    'Android', 'iOS', 'PostgreSQL',
-    'Blockchain', 'QA', 'Software Architect',
-    'Cyber Security', 'UX Design', 'Game Developer',
-    'Technical Writer', 'MLOps', 'Product Manager',
-    'Developer Relations'
+    'React.js', 'Docker', 'Prompt Engineer', 'System Design'
   ];
 
   return (
