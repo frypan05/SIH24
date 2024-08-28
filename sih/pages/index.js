@@ -11,7 +11,7 @@ export default function Home() {
       <h1 className="text-7xl font-bold text-[#2BBCDC] mb-8 text-center raleway-bold">
         StudyNexus
       </h1>
-      <div className="flex justify-center space-x-8 mt-8">
+      <div className="flex justify-center space-x-8 mt-3">
 
         <Link href="/planner">
           <div className={`${styles.card} bg-[#1A1E24] hover:bg-[#1C5E6C] transition-all duration-300 transform hover:scale-105`}>

@@ -29,7 +29,7 @@
 }
 
 .backArrow:hover {
-  background-color: #0b2d76; /* Darker purple on hover */
+  background-color: #1D274B; /* Darker purple on hover */
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
