@@ -25,7 +25,7 @@ export default function Home() {
             <p className="text-gray-300 mt-2">Access various study materials.</p>
           </div>
         </Link>
-        <Link href="/progress">
+        <Link href="/signup">
           <div className={`${styles.card} bg-[#1A1E24] hover:bg-[#1C5E6C] transition-all duration-300 transform hover:scale-105`}>
             <h2 className="text-2xl font-bold text-white">Dashboard</h2>
             <p className="text-gray-300 mt-2">Monitor your learning progress.</p>

@@ -26,8 +26,8 @@ const DeveloperRoadmaps = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <div className="inline-block bg-[#1A1E24] text-[#BD93F9] text-sm px-4 py-2 rounded-full mb-4">
-            {/* Placeholder text */}
-            Jai Mata di
+            {/* Link to the landing page */}
+            <a href="/" className="text-[#BD93F9] hover:underline">Back to Home Page.</a>
           </div>
           <h1 className="text-5xl font-bold text-[#BD93F9] mb-4">Handcrafted Developer Roadmaps</h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
