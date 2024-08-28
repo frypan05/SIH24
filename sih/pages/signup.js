@@ -1,13 +1,14 @@
 
+
 import { useState } from "react";
 import styles from "../styles/signup.module.css";
-import { useRouter } from "next/router";  // Import useRouter from Next.js
+import { useRouter } from "next/router";  // Import useRouter for navigation
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const router = useRouter();  // Initialize router
+  const router = useRouter();  // Initialize the router for handling navigation
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,12 +33,18 @@ const Signup = () => {
     }
   };
 
+  // Function to handle the back navigation
+  const handleBackClick = () => {
+    router.push("/");  // Redirect to the homepage or any desired route
+  };
+
   return (
     <div className={styles.container}>
-      {/* Circular back button */}
-      <button className={styles.backButton} onClick={() => router.push("/")}>
-        &larr; {/* Unicode for a left arrow */}
-      </button>
+      {/* Back Arrow Button */}
+      <div className={styles.backArrow} onClick={handleBackClick}>
+        &#8592; {/* Left arrow symbol */}
+      </div>
+
       <div className={styles.content}>
         <h1 className={`${styles.logo} eras-itc`}>Get in</h1>
         <p className={styles.subheading}>Create Account</p>

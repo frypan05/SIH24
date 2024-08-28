@@ -19,8 +19,10 @@ const Login = () => {
   return (
     <div className={styles.container}>
       {/* Circular back button */}
-      <button className={styles.backButton} onClick={() => router.push("/signup")}>
+      <button className={styles.backArrow} onClick={() => router.push("/signup")}>
         &larr; {/* Unicode for a left arrow */}
+
+        
       </button>
       <div className={styles.content}>
         <h1 className={styles.logo}>Welcome Back</h1>
@@ -67,7 +69,7 @@ const Login = () => {
         <button
           onClick={() => signIn("google", { callbackUrl: "/progress" })} 
           className={styles.button}
-          style={{ backgroundColor: "#DB4437", marginTop: "10px" }}
+          style={{ backgroundColor: "#2A2B00", marginTop: "10px" }}
         >
           Log in with Google
         </button>
