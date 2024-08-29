@@ -1,6 +1,10 @@
+// DeveloperRoadmaps.js
 import React from 'react';
+import { useRouter } from 'next/router';
 
 const DeveloperRoadmaps = () => {
+  const router = useRouter();
+
   const roadmaps = [
     'Frontend', 'Backend', 'DevOps',
     'Full Stack', 'AI and Data Scientist', 'Data Analyst',
@@ -16,9 +20,34 @@ const DeveloperRoadmaps = () => {
 
   // Click handler for roadmap buttons
   const handleRoadmapClick = (roadmap) => {
-    // Add redirect logic here
-    console.log(`Clicked on roadmap: ${roadmap}`);
-    // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    if (roadmap === 'Frontend') {
+      router.push('/frontend');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on roadmap: ${roadmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    if (roadmap === 'Backend') {
+      router.push('/backend');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on roadmap: ${roadmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    if (roadmap === 'DevOps') {
+      router.push('/devops');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on roadmap: ${roadmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    if (roadmap === 'Full Stack') {
+      router.push('/fullstack');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on roadmap: ${roadmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
   };
 
   return (
