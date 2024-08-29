@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Progress = () => {
+  const [timeSpent, setTimeSpent] = useState(0);
+  const [daysAccessed, setDaysAccessed] = useState(0);
+  const [dayStreak, setDayStreak] = useState(1); // Example value, replace with real logic
+
+  useEffect(() => {
+    // Fetch user progress data
+    fetch('/api/user/progress')
+      .then((response) => response.json())
+      .then((data) => {
+        setTimeSpent(data.timeSpent);
+        setDaysAccessed(data.daysAccessed); // Assuming this data is available in the API response
+        setDayStreak(data.dayStreak); // Assuming this data is available in the API response
+      })
+      .catch((error) => console.error('Error fetching progress data:', error));
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#1f3a52] flex flex-col items-center">
       {/* Navbar */}
@@ -25,15 +41,15 @@ const Progress = () => {
         <h2 className="text-lg font-bold mb-4">Activity Summary</h2>
         <div className="flex justify-between mb-6">
           <div className="flex flex-col items-center bg-[#f9e5e5] p-4 rounded-lg">
-            <p className="text-3xl font-bold">76.9</p>
+            <p className="text-3xl font-bold">{(timeSpent / 3600).toFixed(1)}</p>
             <p className="text-sm">hours focused</p>
           </div>
           <div className="flex flex-col items-center bg-[#f9e5e5] p-4 rounded-lg">
-            <p className="text-3xl font-bold">40</p>
+            <p className="text-3xl font-bold">{daysAccessed}</p>
             <p className="text-sm">days accessed</p>
           </div>
           <div className="flex flex-col items-center bg-[#f9e5e5] p-4 rounded-lg">
-            <p className="text-3xl font-bold">1</p>
+            <p className="text-3xl font-bold">{dayStreak}</p>
             <p className="text-sm">day streak</p>
           </div>
         </div>
