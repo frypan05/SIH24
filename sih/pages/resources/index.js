@@ -1,4 +1,3 @@
-
 import { useRouter } from 'next/router';
 
 const Resources = () => {
@@ -12,8 +11,18 @@ const Resources = () => {
     }
   };
 
+  const handleBack = () => {
+    router.push('/');
+  };
+
   return (
-    <div className="h-screen flex justify-center items-center bg-[#000]">
+    <div className="h-screen flex justify-center items-center bg-[#000] relative">
+      <button
+        onClick={handleBack}
+        className="absolute top-4 left-4 bg-[#2BBCDC] text-white py-2 px-4 rounded-md hover:bg-[#1C5E6C] transition duration-300 ease-in-out"
+      >
+        Back
+      </button>
       <div className="text-center">
         <h1 className="text-6xl font-bold text-[#2BBCDC] mb-4">
           Are you a Student or an Instructor?
