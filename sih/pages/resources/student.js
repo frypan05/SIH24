@@ -13,6 +13,12 @@ const DeveloperRoadmaps = () => {
   const skillmaps = [
     'React.js', 'Docker', 'Prompt Engineer', 'System Design'
   ];
+  const questions = [
+    'JavaScript', 'Node.js', 'React', 'Backend', 'Frontend', 'DevOps'
+  ];
+  const bestpractices = [
+    'Backend Performance','Frontend Performance','API Security','Code Reviews','AWS'
+  ];
 
   // Click handler for roadmap buttons
   const handleRoadmapClick = (roadmap) => {
@@ -138,7 +144,7 @@ const DeveloperRoadmaps = () => {
             >
               <span>{roadmap}</span>
               <span className="text-gray-500">➔</span>
-              {(roadmap === 'iOS' || roadmap === 'Developer Relations' || roadmap === 'Product Manager') && (
+              {(roadmap === 'iOS' || roadmap === 'PostgreSQL') && (
                 <span className="text-xs bg-purple-700 text-white px-2 py-1 rounded-full ml-2">New</span>
               )}
             </div>
@@ -168,7 +174,7 @@ const DeveloperRoadmaps = () => {
             >
               <span>{roadmap}</span>
               <span className="text-gray-500">➔</span>
-              {(roadmap === 'iOS' || roadmap === 'Developer Relations' || roadmap === 'Product Manager') && (
+              {(roadmap === 'System Design' || roadmap === 'Prompt Engineer') && (
                 <span className="text-xs bg-purple-700 text-white px-2 py-1 rounded-full ml-2">New</span>
               )}
             </div>
@@ -186,9 +192,40 @@ const DeveloperRoadmaps = () => {
               <a href="https://draw.roadmap.sh/" className="text-[#9E00FF] hover"> + Create your own Roadmap</a>.
             </p>
           </div>}
-
+        </div>
+        <h2 className="text-xl text-gray-300 mb-4">Questions</h2>
+        <div className="grid grid-cols-3 gap-4 mb-8">
+          {questions.map((roadmap, index) => (
+            <div
+              key={index}
+              className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
+              onClick={() => handleRoadmapClick(roadmap)}
+            >
+              <span>{roadmap}</span>
+              <span className="text-gray-500">➔</span>
+              {(roadmap === 'DevOps' || roadmap === 'DevOPs' || roadmap === 'Product Manager') && (
+                <span className="text-xs bg-purple-700 text-white px-2 py-1 rounded-full ml-2">New</span>
+              )}
+            </div>
+          ))}
         </div>
       </div>
+      <h2 className="text-xl text-gray-300 mb-4">Best Practices</h2>
+        <div className="grid grid-cols-3 gap-4 mb-8">
+          {bestpractices.map((roadmap, index) => (
+            <div
+              key={index}
+              className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
+              onClick={() => handleRoadmapClick(roadmap)}
+            >
+              <span>{roadmap}</span>
+              <span className="text-gray-500">➔</span>
+              {(roadmap === 'AWS') && (
+                <span className="text-xs bg-purple-700 text-white px-2 py-1 rounded-full ml-2">New</span>
+              )}
+            </div>
+          ))}
+        </div>
     </div>
   );
 };
