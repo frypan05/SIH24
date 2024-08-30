@@ -1,9 +1,9 @@
 // pages/frontend.js
 import React from 'react';
-import FrontendRoadmap from '../components/BackendRoadmap';
+import BackendRoadmap from '../components/BackendRoadmap';
 
 const FrontendPage = () => {
-  return <FrontendRoadmap />;
+  return <BackendRoadmap />;
 };
 
 export default FrontendPage;

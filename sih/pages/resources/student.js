@@ -8,11 +8,7 @@ const DeveloperRoadmaps = () => {
   const roadmaps = [
     'Frontend', 'Backend', 'DevOps',
     'Full Stack', 'AI and Data Scientist', 'Data Analyst',
-    'Android', 'iOS', 'PostgreSQL',
-    'Blockchain', 'QA', 'Software Architect',
-    'Cyber Security', 'UX Design', 'Game Developer',
-    'Technical Writer', 'MLOps', 'Product Manager',
-    'Developer Relations'
+    'Android', 'iOS', 'PostgreSQL'
   ];
   const skillmaps = [
     'React.js', 'Docker', 'Prompt Engineer', 'System Design'
@@ -48,6 +44,73 @@ const DeveloperRoadmaps = () => {
       console.log(`Clicked on roadmap: ${roadmap}`);
       // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
     }
+    if (roadmap === 'AI and Data Scientist') {
+      router.push('/aidata');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on roadmap: ${roadmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    if (roadmap === 'Data Analyst') {
+      router.push('/dataanalyst');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on roadmap: ${roadmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    if (roadmap === 'Android') {
+      router.push('/android');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on roadmap: ${roadmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    if (roadmap === 'iOS') {
+      router.push('/ios');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on roadmap: ${roadmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    if (roadmap === 'PostgreSQL') {
+      router.push('/postgresql');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on roadmap: ${roadmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+  };
+
+  const handleSkillmapClick = (skillmap) => {
+    if (skillmap === 'React.js') {
+      router.push('/reactjs');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on skillmap: ${skillmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    if (skillmap === 'Docker') {
+      router.push('/docker');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on skillmap: ${skillmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    if (skillmap === 'Prompt Engineer') {
+      router.push('/promptengineer');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on skillmap: ${skillmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    if (skillmap === 'System Design') {
+      router.push('/systemdesign');
+    } else {
+      // Add redirect logic for other roadmaps
+      console.log(`Clicked on skillmap: ${skillmap}`);
+      // window.location.href = `/roadmap/${roadmap.toLowerCase().replace(/\s/g, '-')}`; // Example redirect
+    }
+    
   };
 
   return (
@@ -94,7 +157,7 @@ const DeveloperRoadmaps = () => {
             <div
               key={index}
               className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
-              onClick={() => handleRoadmapClick(roadmap)}
+              onClick={() => handleSkillmapClick(roadmap)}
             >
               <span>{roadmap}</span>
               <span className="text-gray-500">➔</span>
@@ -105,7 +168,7 @@ const DeveloperRoadmaps = () => {
           ))}
           <div
             className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center text-[#9E00FF] cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
-            onClick={() => handleRoadmapClick('Create your own Roadmap')}
+            onClick={() => handleSkillmapClick('Create your own Roadmap')}
           >
             + Create your own Roadmap
           </div>

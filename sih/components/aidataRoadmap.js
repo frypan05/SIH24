@@ -1,7 +1,7 @@
 // components/FrontendRoadmap.js
 import React from 'react';
 
-const BackendRoadmap = () => {
+const aidataRoadmap = () => {
   return (
     <div className="bg-[#081D22] text-white min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
@@ -10,9 +10,9 @@ const BackendRoadmap = () => {
             {/* Link to the landing page */}
             <a href="/" className="text-[#BD93F9] hover:underline">Back to Home Page</a>
           </div>
-          <h1 className="text-5xl font-bold text-[#8AD4D0] mb-4">Backend Roadmap</h1>
+          <h1 className="text-5xl font-bold text-[#8AD4D0] mb-4">AI DATA SCIENCE Roadmap</h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            This page provides a roadmap for backendend development, including key technologies, tools, and skills.
+            This page provides a roadmap for AI DATA SCIENCE development, including key technologies, tools, and skills.
           </p>
         </div>
         {/* Add more content specific to Frontend roadmap here */}
@@ -21,4 +21,4 @@ const BackendRoadmap = () => {
   );
 };
 
-export default BackendRoadmap;
+export default aidataRoadmap;

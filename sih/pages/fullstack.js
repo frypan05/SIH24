@@ -1,9 +1,9 @@
 // pages/frontend.js
 import React from 'react';
-import FrontendRoadmap from '../components/FullstackRoadmap';
+import FullstackRoadmap from '../components/FullstackRoadmap';
 
 const FrontendPage = () => {
-  return <FrontendRoadmap />;
+  return <FullstackRoadmap />;
 };
 
 export default FrontendPage;
