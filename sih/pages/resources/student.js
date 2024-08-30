@@ -209,8 +209,7 @@ const DeveloperRoadmaps = () => {
             </div>
           ))}
         </div>
-      </div>
-      <h2 className="text-xl text-gray-300 mb-4">Best Practices</h2>
+        <h2 className="text-xl text-gray-300 mb-4">Best Practices</h2>
         <div className="grid grid-cols-3 gap-4 mb-8">
           {bestpractices.map((roadmap, index) => (
             <div
@@ -226,6 +225,8 @@ const DeveloperRoadmaps = () => {
             </div>
           ))}
         </div>
+      </div>
+      
     </div>
   );
 };
