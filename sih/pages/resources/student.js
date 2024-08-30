@@ -143,12 +143,19 @@ const DeveloperRoadmaps = () => {
               )}
             </div>
           ))}
-          <div
+          {/* <div
             className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center text-[#9E00FF] cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
-            onClick={() => handleRoadmapClick('Create your own Roadmap')}
+            onClick={() => handleRoadmapClick('https://roadmap.sh/frontend')}
           >
             + Create your own Roadmap
-          </div>
+          </div> */}
+          {<div
+           className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center text-[#9E00FF] cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300">
+            <p className="text-gray-400">
+              <a href="https://draw.roadmap.sh/" className="text-[#9E00FF] hover"> + Create your own Roadmap</a>.
+            </p>
+          </div>}
+
         </div>
 
         <h2 className="text-xl text-gray-300 mb-4">Skill based Roadmaps</h2>
@@ -166,12 +173,20 @@ const DeveloperRoadmaps = () => {
               )}
             </div>
           ))}
-          <div
+          {/* <div
             className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center text-[#9E00FF] cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300"
             onClick={() => handleSkillmapClick('Create your own Roadmap')}
+            
           >
             + Create your own Roadmap
-          </div>
+          </div> */}
+          {<div
+           className="bg-[#01151A] p-4 rounded-lg flex justify-between items-center text-[#9E00FF] cursor-pointer hover:bg-[#07514C] hover:text-white transition-all duration-300">
+            <p className="text-gray-400">
+              <a href="https://draw.roadmap.sh/" className="text-[#9E00FF] hover"> + Create your own Roadmap</a>.
+            </p>
+          </div>}
+
         </div>
       </div>
     </div>
