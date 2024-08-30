@@ -56,7 +56,7 @@ const Progress = () => {
     <div className="min-h-screen bg-[#081D22] flex flex-col items-center">
       {/* Navbar */}
       <header className="w-full flex justify-between items-center p-4 bg-[#1f3a52]">
-        <h1 className="text-white text-2xl">Pomofocus</h1>
+        <h1 className="text-white text-2xl">StudyNexus</h1>
         <div className="flex gap-4">
           <button className="bg-[#A6ACCD] text-[#1f3a52] px-4 py-2 rounded">Report</button>
           <button className="bg-[#A6ACCD] text-[#1f3a52] px-4 py-2 rounded">Settings</button>
