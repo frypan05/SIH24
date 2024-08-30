@@ -1,4 +1,5 @@
 // pages/api/auth/login.js
+import jwt from 'jsonwebtoken';
 
 const users = [
   { email: "daksh@mail.com", password: "cholekulche" },
@@ -17,7 +18,15 @@ export default async function handler(req, res) {
 
     if (user) {
       // Authentication successful
-      res.status(200).json({ message: "Login successful" });
+      // Generate JWT token
+      const secret = process.env.JWT_SECRET;
+      if (!secret) {
+        return res.status(500).json({ message: "Internal server error: Secret key missing" });
+      }
+
+      const token = jwt.sign({ email }, secret, { expiresIn: '1h' });
+
+      res.status(200).json({ message: "Login successful", token });
     } else {
       // Authentication failed
       res.status(401).json({ message: "Invalid email or password" });
