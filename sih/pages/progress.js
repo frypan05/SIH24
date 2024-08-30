@@ -3,18 +3,53 @@ import React, { useEffect, useState } from "react";
 const Progress = () => {
   const [timeSpent, setTimeSpent] = useState(0);
   const [daysAccessed, setDaysAccessed] = useState(0);
-  const [dayStreak, setDayStreak] = useState(1); // Example value, replace with real logic
+  const [dayStreak, setDayStreak] = useState(1);
 
   useEffect(() => {
-    // Fetch user progress data
-    fetch('/api/user/progress')
+    const token = localStorage.getItem('token'); // Assuming token is stored in local storage
+
+    // Fetch user progress data on component mount
+    fetch('/api/user/progress', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setTimeSpent(data.timeSpent);
-        setDaysAccessed(data.daysAccessed); // Assuming this data is available in the API response
-        setDayStreak(data.dayStreak); // Assuming this data is available in the API response
+        setDaysAccessed(data.daysAccessed);
+        setDayStreak(data.dayStreak);
       })
       .catch((error) => console.error('Error fetching progress data:', error));
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const token = localStorage.getItem('token');
+
+      // Simulate time spent tracking (increase by 60 seconds every interval)
+      const timeUpdate = 60;
+
+      // Update local state
+      setTimeSpent((prevTime) => prevTime + timeUpdate);
+
+      // Send updated time spent to server
+      fetch('/api/user/progress', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ timeSpent: timeUpdate }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Progress updated:', data);
+        })
+        .catch((error) => console.error('Error updating progress:', error));
+    }, 60000); // Update every minute
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   return (
@@ -36,7 +71,7 @@ const Progress = () => {
           <button className="text-[#A6ACCD]">Detail</button>
           <button className="text-[#A6ACCD]">Ranking</button>
         </div>
-        
+
         {/* Activity Summary */}
         <h2 className="text-lg font-bold mb-4">Activity Summary</h2>
         <div className="flex justify-between mb-6">
