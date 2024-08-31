@@ -3,24 +3,12 @@ import { ReactSketchCanvas } from 'react-sketch-canvas';
 import { Document, Page, pdfjs } from 'react-pdf';
 import XLSX from 'xlsx';
 import mammoth from 'mammoth';
-import { useRouter } from 'next/router';
-import Modal from 'react-modal'; // Import Modal
+import { useRouter } from 'next/router'; // Import useRouter
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-
 const InstructorResources = () => {
-  const router = useRouter();
+  const router = useRouter(); // Initialize useRouter
   const [selectedColor, setSelectedColor] = useState('black');
   const [selectedTool, setSelectedTool] = useState('pen');
   const [textInput, setTextInput] = useState('');
@@ -28,7 +16,6 @@ const InstructorResources = () => {
   const [textPosition, setTextPosition] = useState({ x: 0, y: 0 });
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [link, setLink] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false); // State for Modal
 
   const colors = ['black', 'red', 'blue', 'yellow', 'pink', 'gray', 'white'];
   const tools = ['pen', 'eraser', 'rectangle', 'circle', 'text'];
@@ -70,16 +57,17 @@ const InstructorResources = () => {
             setUploadedFiles([...uploadedFiles, { type: 'word', content: result.value }]);
           });
       } else if (file.type.includes('image')) {
+        // Handle image file types like PNG, JPG, etc.
         setUploadedFiles([...uploadedFiles, { type: 'image', content: event.target.result }]);
       }
     };
 
     if (file.type.includes('pdf') || file.type.includes('word')) {
-      reader.readAsArrayBuffer(file);
+      reader.readAsArrayBuffer(file); // Read as ArrayBuffer for PDFs and Word files
     } else if (file.type.includes('image')) {
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(file); // Read as Data URL for images
     } else {
-      reader.readAsBinaryString(file);
+      reader.readAsBinaryString(file); // Read as binary string for Excel
     }
   };
 
@@ -91,11 +79,7 @@ const InstructorResources = () => {
   };
 
   const handleShare = () => {
-    setIsModalOpen(true); // Open the modal when 'Publish' is clicked
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+    alert('Share functionality goes here. Implement the sharing logic.');
   };
 
   return (
@@ -148,7 +132,7 @@ const InstructorResources = () => {
                 onChange={(e) => setTextInput(e.target.value)}
                 onBlur={addTextToCanvas}
                 autoFocus
-                style={{ color: 'black' }}
+                style={{ color: 'black' }} // Set input text color to black
               />
             </div>
           )}
@@ -159,42 +143,51 @@ const InstructorResources = () => {
           <input type="file" onChange={handleFileUpload} />
           <input 
             type="text" 
+            placeholder="Enter a link" 
             value={link} 
             onChange={(e) => setLink(e.target.value)} 
-            placeholder="Enter link..." 
-            className="mt-2 border rounded-md py-1 px-2 w-full"
+            className="mt-2 p-2 border rounded-md w-full"
+            style={{ color: 'black' }}
           />
-          <button onClick={handleLinkUpload} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md">
-            Upload Link
-          </button>
-        </div>
-
-        {/* Display uploaded files */}
-        <div className="mt-4 bg-white rounded-lg shadow-md p-4">
+          <button onClick={handleLinkUpload} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md">Add Link</button>
+          
           {uploadedFiles.map((file, index) => (
-            <div key={index} className="mb-2">
-              <p className="text-sm text-gray-800">{file.type}: {file.content.toString()}</p>
+            <div key={index} className="mt-4 p-4 bg-white border border-gray-300 rounded-md shadow-sm text-black">
+              {file.type === 'pdf' && (
+                <Document 
+                  file={{ data: new Uint8Array(file.content) }}
+                  onLoadError={(error) => console.error("PDF load error:", error)} // Error handling
+                  className="pdf-container"
+                >
+                  <Page pageNumber={1} />
+                </Document>
+              )}
+              {file.type === 'excel' && (
+                <table className="min-w-full divide-y divide-gray-200 text-black">
+                  <tbody>
+                    {file.content.map((row, rowIndex) => (
+                      <tr key={rowIndex}>
+                        {row.map((cell, cellIndex) => (
+                          <td key={cellIndex} className="px-6 py-4 whitespace-nowrap text-black">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+              {file.type === 'word' && (
+                <div className="word-content text-black" dangerouslySetInnerHTML={{ __html: file.content }} />
+              )}
+              {file.type === 'image' && (
+                <img src={file.content} alt="Uploaded" className="max-w-full h-auto" />
+              )}
+              {file.type === 'link' && (
+                <a href={file.content} className="text-blue-500 hover:text-blue-800 text-black">{file.content}</a> 
+              )}
             </div>
           ))}
         </div>
       </main>
-
-      {/* Share Modal */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Share Modal"
-      >
-        <h2>Share this whiteboard</h2>
-        <div className="flex justify-around mt-4">
-          <button className="bg-green-500 text-white p-2 rounded-md" onClick={() => window.open('https://api.whatsapp.com/send?text=Check%20this%20out!', '_blank')}>WhatsApp</button>
-          <button className="bg-blue-500 text-white p-2 rounded-md" onClick={() => window.open('mailto:?subject=Check%20this%20out!&body=Here%20is%20a%20resource%20link', '_blank')}>Email</button>
-          <button className="bg-blue-600 text-white p-2 rounded-md" onClick={() => window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://yourresource.com', '_blank')}>LinkedIn</button>
-          <button className="bg-purple-500 text-white p-2 rounded-md" onClick={() => window.open('https://www.udemy.com', '_blank')}>Udemy</button>
-        </div>
-        <button onClick={closeModal} className="mt-4 bg-red-500 text-white p-2 rounded-md">Close</button>
-      </Modal>
     </div>
   );
 };
