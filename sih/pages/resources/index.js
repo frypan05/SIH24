@@ -19,7 +19,7 @@ const Resources = () => {
     <div className="h-screen flex justify-center items-center bg-[#000] relative">
       <button
         onClick={handleBack}
-        className="absolute top-4 left-4 bg-[#2BBCDC] text-white py-2 px-4 rounded-md hover:bg-[#1C5E6C] transition duration-300 ease-in-out"
+        className="absolute top-4 left-4 font-bold bg-[#1c1c1c] text-white py-2 px-4 rounded-md hover:bg-[#1C5E6C] transition duration-300 ease-in-out"
       >
         Back
       </button>
