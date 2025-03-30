@@ -1,95 +1,102 @@
 # SIH24
 Official Repo for SIH 2024
 
-Learning Path Dashboard
+# Learning Path Dashboard
 
-Overview
+An intelligent, user-centric platform designed to facilitate structured skill development with adaptive learning paths, progress tracking, and resource management.
 
-The Learning Path Dashboard is an intelligent, user-centric platform designed to facilitate structured skill development. It provides adaptive learning paths, progress tracking, and resource management, enabling users to optimize their learning experience efficiently.
+## Overview
 
-Key Features
+The Learning Path Dashboard optimizes your learning experience by providing adaptive learning paths, real-time progress tracking, and comprehensive resource management. Built with a clean, distraction-free interface, it helps you focus on what matters most—your learning journey.
 
-📌 Daily Planner – Organize and prioritize tasks for a structured learning routine.
+## Key Features
 
-📊 Progress Tracking – Real-time insights into learning milestones and time spent.
+* 📌 **Daily Planner** – Organize and prioritize tasks for a structured learning routine
+* 📊 **Progress Tracking** – Real-time insights into learning milestones and time spent
+* 📂 **Resource Management** – Upload, categorize, and access educational resources seamlessly
+* 📈 **Adaptive Learning Paths** – Dynamically adjust learning recommendations based on user engagement
+* 🌐 **User Authentication** – Secure login system ensuring personalized dashboards
+* 🎨 **Minimal & Responsive UI** – A clean, distraction-free interface optimized for all devices
 
-📂 Resource Management – Upload, categorize, and access educational resources seamlessly.
+## Technology Stack
 
-📈 Adaptive Learning Paths – Dynamically adjust learning recommendations based on user engagement.
+* **Frontend:** Next.js, Stitches (CSS-in-JS), React
+* **Backend:** FastAPI, PostgreSQL/MySQL (depending on deployment needs)
+* **Authentication:** JWT-based secure login system
+* **Real-Time Features:** WebSockets for live updates
+* **Deployment:** Vercel for frontend, Dockerized backend services
 
-🌐 User Authentication – Secure login system ensuring personalized dashboards.
+## Installation & Setup
 
-🎨 Minimal & Responsive UI – A clean, distraction-free interface optimized for all devices.
-
-Technology Stack
-
-Frontend: Next.js, Stitches (CSS-in-JS), React
-
-Backend: FastAPI, PostgreSQL/MySQL (depending on deployment needs)
-
-Authentication: JWT-based secure login system
-
-Real-Time Features: WebSockets for live updates
-
-Deployment: Vercel for frontend, Dockerized backend services
-
-Installation & Setup
-
-Prerequisites
+### Prerequisites
 
 Ensure you have the following installed:
+* Node.js & npm
+* Python (≥3.8) with FastAPI
+* PostgreSQL/MySQL
+* Docker (optional for containerized setup)
 
-Node.js & npm
+### Setup Instructions
 
-Python (≥3.8) with FastAPI
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/frypan05/SIH24.git
+   cd sih
+   ```
 
-PostgreSQL/MySQL
+2. **Install Dependencies**
+   
+   Frontend:
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+   
+   Backend:
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   uvicorn main:app --reload
+   ```
 
-Docker (optional for containerized setup)
+3. **Configure Database**
+   
+   Set up PostgreSQL/MySQL and update the `.env` files accordingly:
+   
+   ```
+   # backend/.env example
+   DATABASE_URL=postgresql://username:password@localhost/dbname
+   SECRET_KEY=your_secret_key_here
+   ```
 
-Setup Instructions
+## Usage
 
-Clone the Repository
+1. Navigate to `http://localhost:3000` to access the dashboard
+2. Create an account and start managing your learning path
+3. Track progress and utilize the daily planner for optimized learning
 
-git clone https://github.com/yourusername/learning-path-dashboard.git
-cd learning-path-dashboard
+## Future Enhancements
 
-Install Dependencies
+* **AI-Driven Learning Suggestions** – Intelligent course recommendations based on progress
+* **Collaborative Learning Spaces** – Real-time study groups and shared resources
+* **Gamification Elements** – Achievement badges and streak tracking
 
-Frontend
+## Contributing
 
-cd frontend
-npm install
-npm run dev
+We welcome contributions! Please follow these steps:
 
-Backend
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
+## License
 
-Configure DatabaseSet up PostgreSQL/MySQL and update .env files accordingly.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Usage
+## Contact
+Repository owners and Moderators. 
 
-Navigate to http://localhost:3000 to access the dashboard.
-
-Create an account and start managing your learning path.
-
-Track progress and utilize the daily planner for optimized learning.
-
-Future Enhancements
-
-AI-Driven Learning Suggestions – Intelligent course recommendations based on progress.
-
-Collaborative Learning Spaces – Real-time study groups and shared resources.
-
-Gamification Elements – Achievement badges and streak tracking.
-
-Contributing
-
-We welcome contributions! Feel free to submit PRs, report issues, or suggest improvements.
-
-License
-
-This project is licensed under the MIT License.
+Project Link: [https://github.com/frypan05/SIH24](https://github.com/frypan05/SIH24)
